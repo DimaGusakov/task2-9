@@ -1,0 +1,78 @@
+.menu-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #131214;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu-dec1,
+.menu-dec2,
+.menu-dec3 {
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.none {
+  display: none;
+}
+
+.menu-dec1 {
+  top: 19px;
+}
+.menu-dec2 {
+  top: 25px;
+}
+.menu-dec3 {
+  top: 33px;
+}
+
+.main__content.active {
+  margin-left: 300px;
+}
+.main__content {
+  margin-left: 0;
+}
+
+.side-menu {
+  background-color: black;
+  height: 100%;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  overflow-x: hidden;
+  transition: all 0.3s;
+}
+.side-menu.active {
+  width: 300px;
+}
+.side-menu__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: -24px;
+  right: -60px;
+  font-size: 28px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.side-menu__content a {
+  text-decoration: none;
+  font-size: 30px;
+  color: #fff;
+}
