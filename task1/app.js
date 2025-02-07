@@ -12,7 +12,7 @@ const formAdd = document.getElementById("form-add");
 const listGroup = document.getElementById("list-group");
 const input = document.getElementById("input");
 
-const tasks = [];
+let tasks = [];
 
 const getTask = (task, index) => {
   return `
@@ -39,6 +39,11 @@ const render = () => {
   }
 };
 
+if (localStorage.tasks) {
+  tasks = JSON.parse(localStorage.tasks);
+  render(tasks);
+}
+
 formAdd.addEventListener("submit", (e) => {
   e.preventDefault();
   const task = {
@@ -46,6 +51,7 @@ formAdd.addEventListener("submit", (e) => {
     checked: false,
   };
   tasks.push(task);
+  localStorage.tasks = JSON.stringify(tasks);
   render();
   input.value = "";
 });
@@ -54,6 +60,7 @@ listGroup.addEventListener("click", (e) => {
   if (e.target.dataset.type === "remove") {
     const index = +e.target.dataset.index;
     tasks.splice(index, 1);
+    localStorage.tasks = JSON.stringify(tasks);
     render();
     return;
   }
@@ -61,8 +68,9 @@ listGroup.addEventListener("click", (e) => {
   if (e.target.matches('input[type="checkbox"]')) {
     const listGroupItem = e.target.closest(".list-group-item");
     const index = listGroupItem.dataset.index;
-    console.log(index)
+    console.log(index);
     tasks[index].checked = e.target.checked;
-    render()
+    localStorage.tasks = JSON.stringify(tasks);
+    render();
   }
 });
